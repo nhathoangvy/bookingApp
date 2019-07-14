@@ -1,0 +1,98 @@
+<div ng-include="'/header.html'"></div>
+  <section id="page-title">
+
+			<div class="container clearfix">
+
+			<img style="height:140px;float: left;" class="img-thumbnail user-profile-picture" ng-if='vm.startup.logo' ng-src='{{vm.startup.logo}}'></img>
+      <h1 class="menu-user" ng-if='!vm.startup.logo'></h1>
+			<ul class="menu-user">
+			<li>  <strong>Project name</strong>: <span ng-bind="vm.startup.name"></span>    </li>
+			<li>  <strong>Industry</strong>: <span ng-bind="vm.startup.industry"></span></li>
+		</ul>
+		<ul class="menu-user">
+		<li>  <strong>Website</strong>: <a ui-sref="vm.startup.website" ref="EarlyParrot" target="_blank" ng-bind="vm.startup.website"></a>    </li>
+		<li>  <strong>Country</strong>: <span ng-bind="vm.startup.country"></span></li>
+		</ul>
+		  </div>
+		</section><!-- #page-title end -->
+
+  <main class="col-md-12"  ng-if='!vm.user.token'>
+    <h1 style="text-align:center;margin:50px 0">Please <a ui-sref='auth.signin'>Login</a> !!
+  </main>
+  <main class="col-md-12"  ng-if='vm.user.token'>
+  <aside class="col-md-3">
+		<div class="widget clearfix">
+
+										<h4>Reward</h4>
+										<div id="post-list-footer">
+
+												<div>
+												<div class="entry-c">
+													<div class="entry-title" ng-repeat="z in cams.reward.unlockRewardThroughSharing">
+														<h4>{{z.targetName}}</h4>
+														<i>{{z.point}}</i>
+														<p>{{z.description}}</p>
+													</div>
+												</div>
+												
+												
+											</div>
+										
+										</div>
+
+									</div>
+  </aside>
+  <section class="col-md-6" style="border-left:1px solid #d3d3d3">
+    <div class="col_full clearfix">
+
+    						<h3><strong>Screens</strong>: </h3>
+
+    						<div ng-if = "vm.startup.screens" class="masonry-thumbs col-5" data-big="1" data-lightbox="gallery">
+
+    							<a ng-repeat="img in vm.startup.screens" href="{{img}}" data-lightbox="gallery-item"><img class="image_fade" ng-src='{{img}}'></a>
+    							
+    						</div>
+								<div ng-if = "!vm.startup.screens" class="masonry-thumbs col-5" data-big="1" data-lightbox="gallery">
+												</div>
+    					</div>
+              <p><strong>Project description</strong>: <span ng-bind-html="vm.startup.description"></span>    </p>
+
+  </section>
+  <aside class="col-md-3" style="border-left:1px solid #d3d3d3">
+		<div class="widget clearfix">
+
+										<h4>List of campaigns</h4>
+										<div id="post-list-footer" ng-controller="paginationSt">
+											<div ng-repeat="y in camps.campaignsList | startFrom:currentPageSt*pageSizeSt | limitTo:pageSizeSt" class="spost clearfix" ui-sref="campaigns.socialShare({ campaignId: y._id })">
+
+												<div class="entry-image">
+													<a href="#" class="nobg"><img ng-src="{{y.logo}}" alt=""></a>
+												</div>
+												<div class="entry-c">
+													<div class="entry-title">
+														<h4><a href="#" ng-bind="y.name"></a></h4>
+													</div>
+													<ul class="entry-meta">
+														<li ng-bind="y.description"></li>
+														<!-- <li>Subscribe point: <span ng-bind="y.Subscribers.point"></span></li> -->
+													</ul>
+												</div>
+											</div>
+	<ul class="pagination">
+					  <li ng-show="currentPageSt > -1" ng-click="currentPageSt=currentPageSt-1"><a>&laquo;</a></li>
+						  <li ng-repeat="b in getNumberSt(pSt) track by $index" ng-click="$parent.currentPageSt=$index-1" ><a>{{$index+1}}</a></li>
+						  <li ng-show="currentPageSt!==(pSt - 2)" ng-click="currentPageSt=currentPageSt+1"><a >&raquo;</a></li>
+						  <li><span>{{currentPageSt+2}}/<b ng-if="mSt>0">{{numberOfPagesSt()+1}}</b><b ng-if="mSt<=0">{{numberOfPagesSt()}}</b></span></li>
+						</ul>
+										</div>
+									</div>
+  </aside>
+  </main>
+	<main class="col-md-12 butt" style="border-top:1px solid #d3d3d3">
+		<aside class="col-md-3"></aside>
+		<aside class="col-md-6" style="border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3">
+			<button class="button button-3d button-rounded button-aqua">Subscribe</button>
+		<button class="button button-3d button-rounded button-aqua">Share</button>
+	</aside>
+<aside class="col-md-3"></aside>
+	</main>

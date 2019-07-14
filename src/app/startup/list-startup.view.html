@@ -1,0 +1,75 @@
+<div ng-include="'/header.html'"></div>
+  <!-- Content
+  ============================================= -->
+  <section id="content">
+
+    <div class="content-wrap">
+
+      <div class="container clearfix">
+
+        <!-- Post Content
+        ============================================= -->
+        <div class="postcontent nobottommargin col_last">
+
+          <!-- Shop
+          ============================================= -->
+          <div id="shop" ng-controller="pagination" class="shop product-3 grid-container clearfix" ng-init="vm.query()">
+		  <div>
+	<div class="product sf-pant clearfix" ng-repeat="startup in vm.startups | startFrom:currentPage*pageSize | limitTo:pageSize">
+								<div class="product-image">
+									<a href="#" ng-if='startup.logo' ui-sref="startups.view({ startupId: startup._id })"><img style="height:350px;float: left;" class="img-thumbnail user-profile-picture" ng-src='{{startup.logo}}'></img></a>
+									<a href="#" ng-if='!startup.logo' ui-sref="startups.view({ startupId: startup._id })" ><img src="http://placehold.it/350x350" alt="Slim Fit Chinos"></a>
+
+									<div class="product-overlay">
+										<a class="add-to-cart" ui-sref="startups.view({ startupId: startup._id })"><i class="fa fa-info"></i><span> Profile</span></a>
+										<a  ng-if="!vm.profile.campaigns[0]"ui-sref="startups.view({ startupId: startup._id })"  class="item-quick-view"><i class="fa fa-envelope-o"></i><span> Subscribe</span></a>
+										<a  ng-if="vm.profile.campaigns[0]" ui-sref="campaigns.socialShare({ campaignId: vm.profile.campaigns[0]._id })" style="background:#EB9C4D!important" class="item-quick-view"><i class="fa fa-share"></i><span> Share</span></a>
+									</div>
+								</div>
+								<div class="product-desc center">
+									<div class="product-title"><h3><a href="#"><span ng-bind="startup.name"></span></a></h3></div>
+									<div class="product-price"><i ng-bind="startup.country"></i></div>
+								</div>
+							</div>
+
+  </div>
+<div class="center" style="display:inline-block;width:100%">
+	<ul class="pagination">
+					  <li ng-show="currentPage > -1" ng-click="currentPage=currentPage-1"><a>&laquo;</a></li>
+						  <li ng-repeat="i in getNumber(p) track by $index" ng-click="$parent.currentPage=$index-1" ><a>{{$index+1}}</a></li>
+						  <li ng-show="currentPage!==(p - 2)" ng-click="currentPage=currentPage+1"><a >&raquo;</a></li>
+						  <li><span>{{currentPage+2}}/<b ng-if="m>0">{{numberOfPages()+1}}</b><b ng-if="m<=0">{{numberOfPages()}}</b></span></li>
+						</ul>
+	</div>
+	
+
+          </div><!-- #shop end -->
+
+        </div><!-- .postcontent end -->
+
+        <!-- Sidebar
+        ============================================= -->
+        <div class="sidebar nobottommargin">
+          <div class="sidebar-widgets-wrap">
+
+
+            <div class="widget widget-filter-links clearfix">
+
+              <h4>Sort By</h4>
+              <ul class="shop-sorting">
+                <li class="widget-filter-reset active-filter"><a href="#">Clear</a></li>
+                <li ng-click="order('name')"><a>Name</a></li>
+                <li ng-click="order('createdAt')"><a>Created Date</a></li>
+                <li><a>Popularity</a></li>
+              </ul>
+
+            </div>
+
+          </div>
+        </div><!-- .sidebar end -->
+
+      </div>
+
+    </div>
+
+  </section><!-- #content end -->

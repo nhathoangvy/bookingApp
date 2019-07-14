@@ -1,0 +1,20 @@
+{
+  "extends": "eslint:recommended",
+  "plugins": ["angular"],
+  "env": {
+    "browser": true,
+    "jasmine": true
+  },
+  "rules": {
+    "angular/angularelement": 0,
+    "angular/document-service": 0,
+    "angular/on-watch": 0
+  },
+  "globals": {
+    "angular": true,
+    "module": true,
+    "inject": true,
+    "gapi": true,
+    "$": true
+  }
+}

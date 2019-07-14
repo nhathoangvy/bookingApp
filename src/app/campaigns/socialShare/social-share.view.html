@@ -1,0 +1,184 @@
+<div ng-include="'/header.html'"></div>
+<section id="page-title" class="ng-scope">
+
+			<div class="container clearfix">
+
+			<!-- ngIf: vm.startup.logo --><img style="height:140px;float: left;" class="img-thumbnail user-profile-picture ng-scope" ng-src="http://cdn.earlyparrot.com/startups/3add4ca40f57036c621b0d168e3b6033" src="http://cdn.earlyparrot.com/startups/3add4ca40f57036c621b0d168e3b6033"><!-- end ngIf: vm.startup.logo -->
+      <!-- ngIf: !vm.startup.logo -->
+			<ul class="menu-user">
+			<li>  <strong>Campagi name</strong>: <span class="ng-binding">{{cams.name}}</span>    </li>
+		</ul>
+		  </div>
+
+		</section>
+
+  <main class="col-md-12">
+  <aside class="col-md-3">
+		<div class="widget clearfix">
+
+										<h4>Reward</h4>
+											<div id="post-list-footer">
+										<div ng-repeat="z in cams.reward" class="spost clearfix">
+										<div ng-repeat="x in z.rewardTopperForminginFluencers">
+												<div class="entry-image">
+													<h4><a href="#">{{x.winnerPosition}}</a></h4>
+												</div>
+												<div class="entry-c">
+													<div class="entry-title">
+														<h4><a href="#">{{x.description}}</a></h4>
+													</div>
+												</div>
+												</div>
+											</div>
+										
+										</div>
+
+									</div>
+  </aside>
+  <section class="col-md-6" style="border-left:1px solid #d3d3d3">
+		  <div class="panel panel-primary" data-collapsed="0">
+		    <div class="panel-body" style="text-align:center">
+          <h1 style="text-align:center">SCORE</h1>
+          <table width="100%" border="1px solid">
+            <tbody>
+              <tr>
+                <td style="border: 1px solid #f8f8f8; width:100%; font-weight:600; color:green; font-size:24px">9999 pts</td>
+              </tr>
+            </tbody>
+          </table>
+		      <div class="row Social" ng-controller="SocialshareController as shareCtrl"  ng-init="shareCtrl.init(vm)">
+		          <div ng-click='shareCtrl.share("facebook")'> 
+				  <a class="social-icon si-small si-rounded si-facebook">
+              <i class="icon-facebook"></i>
+              <i class="icon-facebook"></i>
+					</a>
+				  </div>
+		          <div ng-click='shareCtrl.share("twitter")'>
+				 <a class="social-icon si-small si-rounded si-twitter">
+              <i class="icon-twitter"></i>
+              <i class="icon-twitter"></i>
+            </a>
+				  </div>
+		          <div ng-click='shareCtrl.share("linkedin")'>
+			         <a class="social-icon si-small si-rounded si-linkedin">
+              <i class="icon-linkedin"></i>
+              <i class="icon-linkedin"></i>
+            </a>
+				  </div>
+		          <div ng-click='shareCtrl.share("google")'> 
+				   <a class="social-icon si-small si-rounded si-gplus">
+              <i class="icon-gplus"></i>
+              <i class="icon-gplus"></i>
+            </a>
+				  </div>
+		          <div ng-click='shareCtrl.share("pinterest")'> 
+			 <a class="social-icon si-small si-rounded si-pinterest">
+              <i class="icon-pinterest"></i>
+              <i class="icon-pinterest"></i>
+            </a>
+				  </div>
+		          <div ng-click='shareCtrl.share("reddit")'> 
+				   <a class="social-icon si-small si-rounded si-reddit">
+              <i class="icon-reddit"></i>
+              <i class="icon-reddit"></i>
+            </a>
+				  </div>
+		          <div ng-click='shareCtrl.share("tumblr")'> 
+				   <a class="social-icon si-small si-rounded si-tumblr">
+              <i class="icon-tumblr"></i>
+              <i class="icon-tumblr"></i>
+            </a> 
+				  </div>
+		          <div ng-click='shareCtrl.share("digg")'> 
+				  <a class="social-icon si-small si-rounded si-digg">
+              <i class="icon-digg"></i>
+              <i class="icon-digg"></i>
+            </a> 
+				  </div>
+		          <div ng-click='shareCtrl.share("buffer")'> 
+				    <a class="social-icon si-small si-rounded si-buffer">
+              <i class="icon-buffer"></i>
+              <i class="icon-buffer"></i>
+            </a> 
+				  </div>
+		          <div ng-click='shareCtrl.share("skype")'> 
+				   <a class="social-icon si-small si-rounded si-skype">
+              <i class="icon-skype"></i>
+              <i class="icon-skype"></i>
+            </a>
+				  </div>
+		<!--          <div ng-click='shareCtrl.share("whatsapp")'> 
+				  
+				     <a href="#" class="social-icon si-small si-rounded si-whatsapp">
+              <i class="icon-whatsapp"></i>
+              <i class="icon-whatsapp"></i>
+            </a>
+			</div>
+		          <div ng-click='shareCtrl.share("facebook-messenger")'> 
+				   <a href="#" class="social-icon si-small si-rounded si-facebook-square">
+              <i class="icon-facebook-square"></i>
+              <i class="icon-facebook-square"></i>
+            </a>
+				  </div>
+		          <div ng-click='shareCtrl.share("viber")'> 
+				   <a href="#" class="social-icon si-small si-rounded si-mobile">
+              <i class="icon-mobile"></i>
+              <i class="icon-mobile"></i>
+            </a>
+				  </div>-->
+		      </div>
+		      <hr>
+		      <div class="row" ng-controller="GoogleApiController as google" ng-init="google.init(vm)">
+		        <div class='col-xs-12 text-center' ng-show="!google.isAuthorized" >
+		          <button ng-click='google.getContact()'>Connect to google</button>
+		        </div>
+		        <div class='col-xs-12' ng-if="google.isAuthorized">
+		          <table class='table table-hover' id="google-contacts">
+		            <thead>
+		              <tr>
+		                <th><input type="checkbox" ng-model="google.selectAll" /></th>
+		                <th>Name</th>
+		                <th>Email</th>
+		              </tr>
+		            </thead>
+		            <tbody>
+		              <tr ng-repeat="contact in google.contacts">
+		                <td><input type="checkbox" ng-model="google.selected[contact.email]" /></td>
+		                <td ng-bind="contact.name"></td>
+		                <td ng-bind="contact.email"></td>
+		              </tr>
+		            </tbody>
+		          </table>
+
+		          <span ng-click='google.invite()' class='btn btn-primary text-center'>Invite</span>
+		        </div>
+		      </div>
+		      <hr>
+		    </div>
+		  </div>
+  </section>
+  <aside class="col-md-3" style="border-left:1px solid #d3d3d3">
+    <div class="widget clearfix run">
+    									<div class="hidden-xs hidden-sm"><div class="clear" style="padding-top: 10px;"></div></div>
+
+    									<div class="col-md-6 bottommargin-sm center">
+    										<div class="counter counter-small total" style="color: #35BBAA;"><span data-from="0" data-to="1567" data-refresh-interval="50" data-speed="150"  class="span">1567</span></div>
+    										<h5 class="nobottommargin">Total Referrals</h5>
+    									</div>
+
+    									<div class="col-md-6 bottommargin-sm center col_last">
+    										<div class="counter counter-small clientserve" style="color: #2CAACA;"><span data-from="0" data-to="899" data-refresh-interval="50" data-speed="100"  ng-bind="camps.total" class="span"></span></div>
+    										<h5 class="nobottommargin">Total Subscribers</h5>
+    									</div>
+
+    								</div>
+                    <div class="widget clearfix run">
+                      <ul class="menu-user">
+                      <li ng-repeat="x in camps.socialMediaList"> 
+					 <strong ng-bind="x.name"></strong>: <span ng-bind="x.sharing_point" class="ng-binding"></span>pts   
+					 </li>
+                   
+                      </ul>
+                    								</div>
+  </aside>
+  </main>

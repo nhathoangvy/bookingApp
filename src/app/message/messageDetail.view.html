@@ -1,0 +1,16 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <h3>Campaign: {{vm.message.campaignName}}</h3>
+        </div>
+        <div class="row">
+            <h4>Message: {{vm.message.message}}</h4>
+        </div>
+        <div class="row">
+            <textarea ng-model="vm.messageReply" placeholder="Your message here" name="" id="" cols="100" rows="10"></textarea>
+        </div>
+        <div class="row">
+            <a ng-disabled="!vm.messageReply" class="btn btn-info" ng-click="vm.send()">Send</a>
+        </div>
+    </div>
+</section>

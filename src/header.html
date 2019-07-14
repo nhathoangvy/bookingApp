@@ -1,0 +1,109 @@
+<header id="header" class="full-header">
+
+		<div id="header-wrap">
+
+			<div class="container clearfix">
+
+				<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+				<!-- Logo
+				============================================= -->
+				<div id="logo">
+					<a href="/" class="standard-logo">
+						<img src="/assets/images/parrot.png" alt="Logo"></a>
+					<a href="/" class="retina-logo">
+						<img src="/assets/images/parrot.png" alt="Logo"></a>
+				</div><!-- #logo end -->
+<!-- Primary Navigation
+============================================= -->
+<nav id="primary-menu">
+
+
+						<ul ng-if='vm.user.token'>
+							<li class="mega-menu"><a ui-sref='messages'><div>Inbox</div></a></li>
+							<li class="mega-menu"><a ui-sref='startups.list'><div>Projects</div></a></li>
+							<li class="mega-menu"><a ui-sref='startups.subcribed'><div>Subscribed to</div></a></li> 
+							<li class="mega-menu sub">
+							<a  style="display:inline-block" ui-sref='users.myProfile'><div>Profile</div></a>
+								<i style="float:right;" class="fa fa-sort-down"></i>
+									<div class="mega-menu-content style-2 clearfix">
+										<ul class="mega-menu-column menu-user">
+											<li> <a ui-sref='users.myProfile'><div>My Profile</div></a></li>
+											<li> <button ng-click='vm.signout()' class="button button-3d button-rounded button-aqua">Sign out</button> </li>
+
+										</ul>
+									</div>
+							</li>
+
+						</ul>
+
+	<ul ng-if='!vm.user.token'>
+
+		<li>
+		<a ui-sref='startups.list'><div>Projects</div></a>
+		</li>
+		<li class="mega-menu sub">
+		<a style="display:inline-block" href="#">Login</a>
+		<i style="float:right;" class="fa fa-sort-down"></i>
+			<div class="mega-menu-content style-2 clearfix">
+				<ul class="mega-menu-column col-md-6">
+					<li class="mega-menu-title"><a href="#"><div>Part</div></a>
+						<ul>
+							<li><a ui-sref='campaigns.subscribe({ campaignId: "589ed9993eecef3857a17e2e" })'><div>Test subscribe</div></a></li>
+							<li><a ui-sref='auth.signin'><div>Sign in</div></a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="mega-menu-column col-md-6">
+					<li>
+						<div class="widget clearfix">
+							<form id="login-form" name="userForm" ng-submit="vm.signin()" class="signin nobottommargin" novalidate autocomplete="off">
+									<h3>Login to your Account</h3>
+
+									<div class="col_full">
+										<label for="username">Username:</label>
+										<input type="text" id="login-form-username" ng-model="vm.credentials.username" name="username" value="" class="form-control not-dark" />
+									</div>
+
+									<div class="col_full">
+										<label for="password">Password:</label>
+										<input type="password" id="login-form-password" ng-model="vm.credentials.password" name="password" value="" class="form-control not-dark" />
+									</div>
+
+									<div class="col_full nobottommargin">
+										<button class="button button-3d button-black nomargin" id="login-form-submit login-home">Sign In</button>
+										<a ui-sref='password.forgot' class="fright">Forgot Password?</a>
+									</div>
+									<alert type="danger" ng-show="vm.error" class="text-center text-danger">
+										<span ng-bind="vm.error"></span>
+									</alert>
+								</form>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+		</li>
+
+	</ul>
+
+	<!-- Top Search
+	============================================= -->
+	<div id="top-search">
+	  <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+				<form ng-submit="vm.search()" autocomplete="off">
+			<input id="sear" class="typeahead sm-form-control form-control" type="text" placeholder="Type &amp; Hit Enter.." ng-keypress="active()" ng-model="vm.key.name">
+			<input style="display:none" type="submit"/>
+		</form>
+
+</nav><!-- #primary-menu end -->
+<ul class="filterShow" ng-init="vm.query()">
+		<li ng-repeat="startup in vm.startups | filter : vm.key.name">
+			<a ui-sref="startups.view({ startupId: startup._id })">{{startup.name}}</a>
+		</li>
+		</ul>
+</div>
+
+</div>
+
+</header><!-- #header end -->

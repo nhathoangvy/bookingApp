@@ -1,0 +1,48 @@
+
+	<div ng-include="'/header.html'"></div>
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap nopadding">
+
+
+				<div class="section nobg full-screen nopadding nomargin">
+					<div class="container vertical-middle divcenter clearfix">
+
+						<div class="panel panel-default divcenter noradius noborder" style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
+							<div class="panel-body" style="padding: 40px;">
+							<form id="login-form" name="userForm" ng-submit="vm.signin()" class="signin nobottommargin" novalidate autocomplete="off">
+									<h3>Login to your Account</h3>
+
+									<div class="col_full">
+										<label for="username">Username:</label>
+										<input type="text" id="login-form-username" ng-model="vm.credentials.username" name="username" value="" class="form-control not-dark" />
+									</div>
+
+									<div class="col_full">
+										<label for="password">Password:</label>
+										<input type="password" id="login-form-password" ng-model="vm.credentials.password" name="password" value="" class="form-control not-dark" />
+									</div>
+
+									<div class="col_full nobottommargin">
+										<button class="button button-3d button-black nomargin" id="login-form-submit">Sign In</button>
+										<!--  <a ui-sref='auth.signup'>Sign up</a> -->
+										<a ui-sref='password.forgot' class="fright">Forgot Password?</a>
+									</div>
+                  <alert type="danger" ng-show="vm.error" class="text-center text-danger">
+                    <span ng-bind="vm.error"></span>
+                  </alert>
+								</form>
+
+								<div class="line line-sm"></div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->

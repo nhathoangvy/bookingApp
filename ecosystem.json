@@ -1,0 +1,28 @@
+{
+  "apps": [{
+    "name": "APP",
+    "script": "server.js",
+    "env": {
+      "COMMON_VARIABLE": "true"
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    }
+  }],
+  "deploy": {
+    "production": {
+      "user": "root",
+      "host": "earlyparrot.com",
+      "ref": "origin/deploy",
+      "repo": "git@bitbucket.org:ducpham0112/earlyparrot-client.git",
+      "path": "/root/App-EarlyParrot",
+      "pre-setup": "apt-get install git",
+      "post-setup": "ls -la",
+      "pre-deploy-local": "echo 'This is a local executed command'",
+      "post-deploy": "npm install && bower install --allow-root && gulp && pm2 startOrRestart ecosystem.json --env production",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
